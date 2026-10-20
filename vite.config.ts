@@ -1,0 +1,18 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import wasm from 'vite-plugin-wasm';
+
+export default defineConfig({
+  plugins: [react(), wasm()],
+  base: './',
+  build: {
+    target: 'esnext',
+  },
+  server: {
+    port: 5177,
+    open: false,
+  },
+  optimizeDeps: {
+    exclude: ['@automerge/automerge-wasm'],
+  },
+});
